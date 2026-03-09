@@ -97,6 +97,10 @@ const SingleReel = ({ reel }) => {
   const likeHandler = async (isFromDoubleTap = false) => {
     if (isFromDoubleTap && isLiked) return;
 
+    setTotalLikes((prev) => prev + 1);
+    setIsLiked(true);
+    localStorage.setItem(`isLiked_${reel?._id}`, "true");
+
     try {
       const response = await axios.post(
         `${API_URL}/api/food/like`,
@@ -104,11 +108,7 @@ const SingleReel = ({ reel }) => {
         { withCredentials: true },
       );
 
-      if (response.data.like) {
-        setTotalLikes((prev) => prev + 1);
-        setIsLiked(true);
-        localStorage.setItem(`isLiked_${reel?._id}`, "true");
-      } else {
+      if (!response.data.like) {
         setTotalLikes((prev) => Math.max(0, prev - 1));
         setIsLiked(false);
         localStorage.setItem(`isLiked_${reel?._id}`, "false");
