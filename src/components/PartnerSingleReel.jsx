@@ -12,6 +12,8 @@ const PartnerSingleReel = ({ reel, isOwnReel = true }) => {
 
   const [isShareOpen, setIsShareOpen] = useState(false);
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const initialCount =
     reel?.commentCount ||
     (Array.isArray(reel?.comments)
@@ -59,9 +61,7 @@ const PartnerSingleReel = ({ reel, isOwnReel = true }) => {
     setIsCommentOpen(true);
     setIsLoadingComments(true);
     try {
-      const res = await axios.get(
-        `http://localhost:3000/api/food/${reel?._id}/comments`,
-      );
+      const res = await axios.get(`${API_URL}/api/food/${reel?._id}/comments`);
       setCommentsList(res.data.comments);
     } catch (error) {
       toast.error("Failed to load comments");

@@ -10,6 +10,8 @@ const SingleReel = ({ reel }) => {
   const clickTimeout = useRef(null);
   const navigate = useNavigate();
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [showLikeAnimation, setShowLikeAnimation] = useState(false);
 
@@ -97,7 +99,7 @@ const SingleReel = ({ reel }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/food/like",
+        `${API_URL}/api/food/like`,
         { foodId: reel?._id },
         { withCredentials: true },
       );
@@ -139,7 +141,7 @@ const SingleReel = ({ reel }) => {
   const saveHandler = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/food/save",
+        `${API_URL}/api/food/save`,
         { foodId: reel?._id },
         { withCredentials: true },
       );
@@ -161,7 +163,7 @@ const SingleReel = ({ reel }) => {
   const handleFollowToggle = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/user/follow",
+        `${API_URL}/api/user/follow`,
         { partnerId: reel?.foodPartner?._id },
         { withCredentials: true },
       );
@@ -180,9 +182,7 @@ const SingleReel = ({ reel }) => {
     setIsCommentOpen(true);
     setIsLoadingComments(true);
     try {
-      const res = await axios.get(
-        `http://localhost:3000/api/food/${reel?._id}/comments`,
-      );
+      const res = await axios.get(`${API_URL}/api/food/${reel?._id}/comments`);
       setCommentsList(res.data.comments);
     } catch (error) {
       toast.error("Failed to load comments");
@@ -197,7 +197,7 @@ const SingleReel = ({ reel }) => {
 
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/food/comment",
+        `${API_URL}/api/food/comment`,
         { foodId: reel?._id, text: newComment },
         { withCredentials: true },
       );
@@ -220,12 +220,9 @@ const SingleReel = ({ reel }) => {
     setLocalCommentCount((prev) => Math.max(0, prev - 1));
 
     try {
-      await axios.delete(
-        `http://localhost:3000/api/food/comment/${commentId}`,
-        {
-          withCredentials: true,
-        },
-      );
+      await axios.delete(`${API_URL}/api/food/comment/${commentId}`, {
+        withCredentials: true,
+      });
       toast.success("Comment deleted");
     } catch (error) {
       setCommentsList(previousComments);
