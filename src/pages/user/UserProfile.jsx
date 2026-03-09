@@ -89,13 +89,13 @@ const UserProfile = () => {
       <div className="w-full max-w-3xl min-h-screen bg-white dark:bg-black relative flex flex-col shadow-sm border-x border-transparent sm:border-zinc-200 sm:dark:border-zinc-900">
         {/* Top Header */}
         <div className="sticky top-0 z-40 bg-white/90 dark:bg-black/90 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-900 px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center space-x-1">
+          <div className="max-w-[70%] flex items-center space-x-1">
             <img
               src="https://ik.imagekit.io/adityazvs6yuayk/logos/Craver-logo-1.png"
               alt="craver-logo"
               className="w-8"
             />{" "}
-            <h1 className="text-xl font-bold text-zinc-900 dark:text-white tracking-tight">
+            <h1 className="text-xl font-bold text-zinc-900 dark:text-white tracking-tight truncate">
               {userData.username}
             </h1>
           </div>

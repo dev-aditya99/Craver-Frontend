@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import UserBottomNavigation from "../../components/UserBottomNavigation";
 import SingleReel from "../../components/SingleReel";
+import EmptyFeed from "../../components/EmptyFeed";
 
 // --- Main Home Feed Component ---
 const Home = () => {
@@ -18,10 +19,6 @@ const Home = () => {
         setReels(res.data?.foodItems || []);
       })
       .catch((err) => {
-        toast.error(
-          err.response?.data?.message ||
-            "Failed to load reels. Please try again.",
-        );
         console.error(
           "Error fetching reels:",
           err.response ? err.response.data : err.message,
@@ -45,11 +42,18 @@ const Home = () => {
           </h1>
         </div>
 
-        {/* Map through the videos */}
-        {reels.map((reel) => (
-          <SingleReel key={reel._id} reel={reel} />
-        ))}
-        <UserBottomNavigation />
+        <div className="bg-black min-h-screen">
+          {reels.length > 0 ? (
+            <div className="reel-container snap-y snap-mandatory overflow-y-scroll h-screen">
+              {reels.map((reel) => (
+                <SingleReel key={reel._id} reel={reel} />
+              ))}
+            </div>
+          ) : (
+            <EmptyFeed /> // <-- Yahan call karein
+          )}
+          <UserBottomNavigation />
+        </div>
       </div>
     </div>
   );
