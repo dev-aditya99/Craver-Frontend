@@ -251,7 +251,7 @@ const SingleReel = ({ reel }) => {
 
   const shareToPlatform = (platform) => {
     const text = encodeURIComponent(
-      `Check out this amazing food reel on Zomato Reels! 🤤`,
+      `Check out this amazing food reel on Craver! 🤤`,
     );
     const url = encodeURIComponent(shareUrl);
     let shareLink = "";

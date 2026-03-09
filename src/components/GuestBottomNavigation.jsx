@@ -108,7 +108,7 @@ const GuestBottomNavigation = () => {
             </h3>
             <p className="text-zinc-500 dark:text-zinc-400 text-sm mb-6">
               You need to log in to explore more reels and discover new food
-              partners. Join Zomato Reels today!
+              partners. Join Craver today!
             </p>
 
             <div className="flex flex-col space-y-3">

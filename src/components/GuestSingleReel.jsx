@@ -265,7 +265,7 @@ const GuestSingleReel = ({ reel }) => {
               Login Required
             </h3>
             <p className="text-zinc-500 dark:text-zinc-400 text-sm mb-6">
-              You need to log in to {authPrompt.action}. Join Zomato Reels to
+              You need to log in to {authPrompt.action}. Join Craver to
               interact!
             </p>
             <div className="flex flex-col space-y-3">

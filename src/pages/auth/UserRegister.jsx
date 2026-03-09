@@ -53,7 +53,7 @@ const UserRegister = () => {
     <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 flex flex-col justify-center py-12 px-6 lg:px-8 transition-colors duration-300">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="text-center text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
-          Join Zomato Reels
+          Join Craver
         </h2>
         <p className="mt-2 text-center text-sm text-zinc-600 dark:text-zinc-400">
           Discover new flavors and order your next meal.
